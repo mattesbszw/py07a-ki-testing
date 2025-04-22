@@ -1,3 +1,6 @@
+import pytest
+from py07a_ki import ist_in_klasse
+
 def test_ist_in_einer_klasse():
 
 	einzelschueler1 = {"Nachname": "Mustermann", "Vorname": "Max", "Klassenbezeichnung": "BFI10A"}
@@ -58,26 +61,3 @@ def test_ist_in_misch_masch():
 	assert ist_in_klasse(einzelschueler2, misch_masch) == True
 	assert ist_in_klasse(einzelschueler3, misch_masch) == False
 
-
-def ist_in_klasse(einzelschueler, klassen):
-
-    # Extrahiere die Klassenbezeichnung des Schülers
-    klassenbezeichnung = einzelschueler.get("Klassenbezeichnung")
-    
-    # Teile die übergebenen Klassenbereiche in eine Liste auf
-    klassen_liste = klassen.split(',')
-    
-    # Überprüfe, ob die Klassenbezeichnung des Schülers in einer der Klassenbereiche enthalten ist
-    for klasse in klassen_liste:
-        # Überprüfe, ob die Klassenbezeichnung des Schülers mit der Klasse oder dem Bereich übereinstimmt
-        if klassenbezeichnung == klasse or klassenbezeichnung.startswith(klasse):
-            return True
-            
-    return False
-
-# Dieses if sorgt dafür, dass der Code nur dann ausgeführt wird, wenn die py-Datei vom Interpreter selbst
-# auf "Top-Level" ausgeführt wird; pytest ignoriert die nachfolgenden Zeilen
-if __name__ == '__main__':
-
-    # Unser Programm soll gar nix machen, dient nur dem Testen
-    pass
